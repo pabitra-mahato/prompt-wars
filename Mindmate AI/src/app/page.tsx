@@ -71,19 +71,28 @@ export default function DashboardPage() {
       </div>
 
       {/* Outputs Section */}
-      <div className="space-y-6">
+      <section aria-label="AI wellness diagnostic outputs" className="space-y-6">
         <h2 className="text-xs font-black text-slate-455 uppercase tracking-widest border-l-2 border-emerald-500 pl-2">
           2. Diagnostic Outputs
         </h2>
 
         {isGenerating ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            role="status"
+            aria-busy="true"
+            aria-label="Generating your AI wellness analysis, please wait"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             <LoadingSkeleton variant="card" count={1} />
             <LoadingSkeleton variant="list" count={1} />
             <LoadingSkeleton variant="card" count={1} />
           </div>
         ) : generatedResult ? (
-          <div className="space-y-8 animate-fade-in">
+          <div
+            aria-live="polite"
+            aria-atomic="false"
+            className="space-y-8 animate-fade-in"
+          >
             
             {/* Safety Layer Alert Banner */}
             {generatedResult.safetyLayer.concerningLanguageDetected && (
@@ -505,7 +514,7 @@ export default function DashboardPage() {
             </div>
           </div>
         )}
-      </div>
+      </section>
 
     </div>
   );

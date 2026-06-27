@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "MindMate AI - Cognitive Health Dashboard",
   description: "Monitor mood fluctuations, manage autonomic stress baseline, identify daily trigger patterns, and access clinical self-care recommendation pathways.",
+  keywords: ["mental wellness", "student wellbeing", "stress management", "AI coach", "exam preparation"],
+  authors: [{ name: "MindMate AI" }],
+  robots: "index, follow",
 };
 
 export const viewport: Viewport = {
@@ -35,8 +38,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-full flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300`}
       >
+        {/* Skip-to-content link for keyboard/screen reader users */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:rounded-lg focus:bg-emerald-600 focus:px-4 focus:py-2 focus:text-white focus:text-sm focus:font-bold focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         <Navbar />
-        <main className="flex-1">
+        <main id="main-content" className="flex-1" role="main" aria-label="MindMate AI dashboard content">
           {children}
         </main>
         <Footer />
